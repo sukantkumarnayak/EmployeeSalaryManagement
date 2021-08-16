@@ -172,9 +172,10 @@ public class EmployeeSalaryManagementServiceImpl implements EmployeeSalaryManage
 	 *
 	 */
 	public void updateEmployee(String id, EmployeeDetailsDto e) throws BadRequestException {
+		e.setId(id);
 		validate(e);
 
-		if (dao.findById(id).isEmpty()) {
+		if (!dao.findById(id).isPresent()) {
 			logger.error("Entered employee ID does not exist");
 			throw new BadRequestException("No such employee");
 		}
@@ -195,7 +196,7 @@ public class EmployeeSalaryManagementServiceImpl implements EmployeeSalaryManage
 	 */
 	public void deleteEmployee(String id) {
 		Optional<EmployeeDetails> o = dao.findById(id);
-		if (o.isEmpty()) {
+		if (!o.isPresent()) {
 			logger.error("Entered employee ID does not exist");
 			throw new BadRequestException("no Such Employee");
 		}

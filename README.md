@@ -8,6 +8,7 @@ Following are the assumptions taken while building the application
 5. Authentication/Authorization is not required.
 6. Encryption via HTTPS not necessary
 7. CSV column names are case sensitive
+8. id and login are case sensitive
 
 #Design Decisions
 1. Application is build in such a way that in future it can be extended for reading from Excel or other formats.
